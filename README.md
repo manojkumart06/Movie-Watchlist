@@ -7,7 +7,7 @@ The Movie Watchlist application is a web-based tool that allows users to manage 
 
 [Watch Live here](https://movie-watchlist-ocd9.vercel.app/)
 
-[Explantaion video]()
+[Explantaion video](https://www.loom.com/share/22809131f84941e1a7e124c198192869?sid=4ba5763a-11e2-4145-830c-486e326891f2)
 
 ## Tech Stack
 
