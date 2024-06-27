@@ -11,7 +11,7 @@ app.use(express.json());
 app.use(cors());
 
 app.get("/", (req, res) => {
-    res.send("HOME PAGE");
+    res.send("HomE PagE");
 });
 
 app.use("/movie", movieRouter); // middleware
