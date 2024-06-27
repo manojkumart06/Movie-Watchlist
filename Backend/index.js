@@ -1,14 +1,28 @@
 import express from 'express';
-import dotenv from "dotenv";
+import connection from './config/dbConfig.js';
+import movieRouter from './Routes/movieRoute.js';
+import cors from 'cors';
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 const app = express();
-const PORT = process.env.PORT || 7001;
-
+app.use(express.json());
+app.use(cors());
 
 app.get("/", (req, res) => {
-    res.send("Hi WORLD!");
-  });
-  
-  app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`);
+    res.send("HOME PAGE");
+});
+
+app.use("/movie", movieRouter); // middleware
+
+app.listen(process.env.PORT, async () => {
+    try {
+        await connection;
+        console.log("Connected Successfully");
+    } catch (err) {
+        console.log("Not Connected");
+        console.log(err);
+    }
+    console.log(`Server is running on port ${process.env.PORT}`);
 });

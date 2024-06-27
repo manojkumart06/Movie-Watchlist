@@ -1,16 +1,13 @@
-import { useState } from 'react'
-import './App.css'
+//import modules
+import './App.css';
+import AllRoutes from './routes';
 
 function App() {
-  
-
   return (
-    <>
-      <div className="container">
-
-      </div>
-    </>
-  )
+    <div className="App">
+      <AllRoutes/>
+    </div>
+  );
 }
 
-export default App
+export default App;

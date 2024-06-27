@@ -1,33 +1,114 @@
-import { FETCH_LOADING, FETCH_SUCCESS, FETCH_FAILURE } from "../actions/fetchAction"
+//importing the Action Types
+import {
+    GET_MOVIES_LOADING,
+    GET_MOVIES_SUCCESS,
+    GET_MOVIES_ERROR,
+    GET_MOVIES_UPDATE,
+    GET_MOVIE_DELETE,
+    REVIEW_UPDATE,
+    WATCH_STATUS_TOGGLE,
+    ADD_MOVIES_SUCCESS,
+    GET_MOVIE,
+} from "./actionTypes";
 
-const INITIAL_STATE = { isLoading : false, data : [], error : null };
+import axios from "axios"
+  
+const initialState = {
+    movies: [],
+  status: 'idle',
+  error: null,
+  
+};
 
-
-export const fetchReducer = (state = INITIAL_STATE, action) => {
-    switch(action.type){
-        case FETCH_LOADING:
+const movieReducer = (state = initialState, action) => {
+    const { type, payload } = action;
+    switch (type) {
+        case GET_MOVIES_LOADING: {
             return {
                 ...state,
-                isLoading : false
+                status: "loading",
+                error: false,
             }
-        case FETCH_SUCCESS:
-            console.log("Reducer: Handling FETCH_SUCCESS with payload:", action.payload);
-            return{
-                ...state,
-                data : action.payload,
-                isLoading : true
-            }
-        case FETCH_FAILURE:
-            console.log("Reducer: Handling FETCH_FAILURE with payload:", action.payload);
-            return{
-                ...state,
-                error:action.payload,
-                isLoading : false
-            }
-
-        default :
-        return{
-            state
         }
+
+        case GET_MOVIES_SUCCESS: {
+            return {
+                ...state,
+                movies: payload,
+                status: "success",
+            }
+        }
+
+        case GET_MOVIES_ERROR: {
+            return {
+                ...state,
+                status: "error",
+                error: false,
+            }
+        }
+
+        case ADD_MOVIES_SUCCESS: {
+            return {
+                ...state,
+                status: "success",
+                error: false,
+                movie:payload
+            }
+        }
+
+        case GET_MOVIES_UPDATE:{
+            return {
+                ...state,
+                movies: state.movies.map(movie => 
+                    movie._id === payload.id ? payload : movie
+                  ),
+            }
+        }
+
+        case GET_MOVIE_DELETE:{
+            return {
+                ...state,
+                movies:state.movies.filter((data)=> data._id !== payload.id)
+            }
+        }
+
+        case WATCH_STATUS_TOGGLE: {
+            return {
+              ...state,
+              movies: state.movies.map(movie =>
+                movie._id === payload._id ? payload : movie
+              ),
+            };
+        }
+
+
+        case REVIEW_UPDATE:{
+            return {
+                status: "success",
+                error: null,
+                movies: state.movies.map(movie => 
+                    movie._id === payload.id ? payload : movie
+                  ),
+            }
+        }
+
+        case GET_MOVIE: {
+            return {
+                status: "success",
+                error: null,
+                movies: state.movies.map(movie =>
+                    movie._id === payload._id ? payload : movie
+                ),
+            };
+        }
+       
+        
+        default: {
+            return initialState;
+        }
+
     }
 }
+
+
+export default movieReducer;
