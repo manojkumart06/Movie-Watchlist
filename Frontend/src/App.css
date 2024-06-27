@@ -1,4 +1,5 @@
 #root {
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
@@ -12,7 +13,7 @@
   transition: filter 300ms;
 }
 .logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
+  filter: drop-shadow(0 0 2em #dcdde4aa);
 }
 .logo.react:hover {
   filter: drop-shadow(0 0 2em #61dafbaa);

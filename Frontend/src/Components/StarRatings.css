@@ -1,0 +1,8 @@
+.star {
+    font-size: 1.5rem; 
+    color: #ebdc3e; 
+  }
+  
+  .star.marked {
+    color: #e8da37; 
+  }

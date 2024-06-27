@@ -9,7 +9,7 @@ import {
     WATCH_STATUS_TOGGLE,
     ADD_MOVIES_SUCCESS,
     GET_MOVIE,
-} from "./actionTypes";
+} from "../actions/fetchActionTypes";
 
 import axios from "axios"
   

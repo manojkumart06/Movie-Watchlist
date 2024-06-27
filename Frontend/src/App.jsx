@@ -1,4 +1,3 @@
-//import modules
 import './App.css';
 import AllRoutes from './routes';
 
